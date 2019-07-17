@@ -14,6 +14,7 @@
 		EB1AFEB522D65DBC00ED0725 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB1AFEB322D65DBC00ED0725 /* LaunchScreen.storyboard */; };
 		EB1AFEBD22D65E9600ED0725 /* SingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1AFEBC22D65E9600ED0725 /* SingIn.swift */; };
 		EB1AFEBF22D6643700ED0725 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1AFEBE22D6643700ED0725 /* AuthModel.swift */; };
+		EB4E0D4C22DF9E3000493423 /* ServerInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4E0D4B22DF9E3000493423 /* ServerInformationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		EB1AFEB622D65DBC00ED0725 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB1AFEBC22D65E9600ED0725 /* SingIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingIn.swift; sourceTree = "<group>"; };
 		EB1AFEBE22D6643700ED0725 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
+		EB4E0D4B22DF9E3000493423 /* ServerInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerInformationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				EB1AFEAA22D65DBB00ED0725 /* AppDelegate.swift */,
 				EB1AFEAC22D65DBB00ED0725 /* ViewController.swift */,
 				EB1AFEAE22D65DBB00ED0725 /* Main.storyboard */,
+				EB4E0D4B22DF9E3000493423 /* ServerInformationView.swift */,
 				EB1AFEBE22D6643700ED0725 /* AuthModel.swift */,
 				EB1AFEBC22D65E9600ED0725 /* SingIn.swift */,
 				EB1AFEB122D65DBC00ED0725 /* Assets.xcassets */,
@@ -144,6 +147,7 @@
 				EB1AFEBD22D65E9600ED0725 /* SingIn.swift in Sources */,
 				EB1AFEBF22D6643700ED0725 /* AuthModel.swift in Sources */,
 				EB1AFEAD22D65DBB00ED0725 /* ViewController.swift in Sources */,
+				EB4E0D4C22DF9E3000493423 /* ServerInformationView.swift in Sources */,
 				EB1AFEAB22D65DBB00ED0725 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

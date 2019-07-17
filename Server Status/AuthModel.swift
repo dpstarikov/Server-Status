@@ -14,7 +14,7 @@ struct Credimentals:Decodable {
 
 // MARK: - ServerElement
 struct ServerElement: Codable {
-    let startupDuration, eventQueueLength: Int?
+    let startupDuration, eventQueueLength: Int
     let installationDate, version: String
     let maxMemory, uptime: Int
     let cpuLoad: Double

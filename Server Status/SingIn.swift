@@ -10,6 +10,9 @@ import UIKit
 
 class SingIn: UIViewController {
     
+    public var tempStatus = ServerElement(startupDuration: 0, eventQueueLength: 0, installationDate: "s", version: "s", maxMemory: 1, uptime: 1, cpuLoad: 1.1, totalMemory: 1, eventsProcessed: 1, name: "name", cpuLoadSystem: 0.1, startTime: "s", eventsScheduled: 0, freeMemory: 0, diskUtilization: [DiskUtilization(diskUtilizationName: "s", diskUtilizationSpace: 0.0)])
+    
+    
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var server: UITextField!
@@ -38,7 +41,7 @@ class SingIn: UIViewController {
         // segue to another view
     }
     
-    func popUpAlert(alertMessage:String) -> Void {
+    func popUpAlert(alertMessage:String) {
         
         let alert = UIAlertController(title: "Alert", message: alertMessage, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
@@ -86,7 +89,10 @@ class SingIn: UIViewController {
             }
             else {
                 print("Can't connect")
-                self.popUpAlert(alertMessage: "Can't connect to server. Enter valid credimentals and try again")
+                
+                DispatchQueue.main.async {
+                    self.popUpAlert(alertMessage: "Can't connect to server. Enter valid credimentals and try again")
+                }
             }
 
         })
@@ -117,7 +123,11 @@ class SingIn: UIViewController {
                     print(data!)
                     do {
                         let serverData = try JSONDecoder().decode(Server.self, from: data!)
-                        print(serverData[0].name)
+
+                        DispatchQueue.main.async {
+                            self.tempStatus = serverData[0]
+                            self.performSegue(withIdentifier: "showInfo", sender: nil)
+                        }
                     } catch let error{
                         print(error)
                     }
@@ -127,7 +137,6 @@ class SingIn: UIViewController {
             } else {
                 print("can't autorize")
             }
-
 
         })
         

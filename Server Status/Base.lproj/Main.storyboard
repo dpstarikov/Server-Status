@@ -72,11 +72,41 @@
                         <outlet property="password" destination="2cl-iW-fPC" id="gZM-88-ZSj"/>
                         <outlet property="server" destination="MOv-D7-CIL" id="7RD-4M-hfw"/>
                         <outlet property="username" destination="1N8-un-cm7" id="r8C-VA-hti"/>
+                        <segue destination="cMS-PP-xPj" kind="show" identifier="showInfo" id="p6b-SU-tbJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+        </scene>
+        <!--Server Information View-->
+        <scene sceneID="XtQ-l8-koP">
+            <objects>
+                <viewController storyboardIdentifier="ServerInformationView" id="cMS-PP-xPj" customClass="ServerInformationView" customModule="Server_Status" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6aG-hW-UyK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ifz-gb-eLb">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Item" id="CEU-ex-kXN"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <viewLayoutGuide key="safeArea" id="ADf-kJ-qqr"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Ifz-gb-eLb"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rwR-yS-6F7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="928.98550724637687" y="139.95535714285714"/>
         </scene>
     </scenes>
 </document>
