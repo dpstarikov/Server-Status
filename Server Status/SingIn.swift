@@ -8,9 +8,9 @@
 
 import UIKit
 
+var tempStatus = ServerElement(startupDuration: 100, eventQueueLength: 0, installationDate: "s", version: "5.70.10", maxMemory: 1, uptime: 1, cpuLoad: 1.1, totalMemory: 1, eventsProcessed: 1, name: "AggreGate Server", cpuLoadSystem: 0.1, startTime: "s", eventsScheduled: 0, freeMemory: 0, diskUtilization: [DiskUtilization(diskUtilizationName: "5.70.10", diskUtilizationSpace: 0.0)])
+
 class SingIn: UIViewController {
-    
-    public var tempStatus = ServerElement(startupDuration: 0, eventQueueLength: 0, installationDate: "s", version: "s", maxMemory: 1, uptime: 1, cpuLoad: 1.1, totalMemory: 1, eventsProcessed: 1, name: "name", cpuLoadSystem: 0.1, startTime: "s", eventsScheduled: 0, freeMemory: 0, diskUtilization: [DiskUtilization(diskUtilizationName: "s", diskUtilizationSpace: 0.0)])
     
     
     @IBOutlet weak var username: UITextField!
@@ -25,16 +25,19 @@ class SingIn: UIViewController {
     }
     
     @IBAction func connect(_ sender: UIButton) {
-        //need  to validate data first
         
-        if username.text!.isEmpty || password.text!.isEmpty || server.text!.isEmpty {
+        //MARK: turn on after test
+        
+  /*      if username.text!.isEmpty || password.text!.isEmpty || server.text!.isEmpty {
             popUpAlert(alertMessage: "Enter valid username credimentals and server adress to connect")
         } else {
             let serverUsername = username.text!
             let serverPass = password.text!
             let serverUrl = server.text!
             auth(urlFromUser: serverUrl, user: serverUsername, pass: serverPass)
-        }
+        } */
+        
+        self.performSegue(withIdentifier: "showInfo", sender: nil)
         
         
         //call rest api func
@@ -72,7 +75,7 @@ class SingIn: UIViewController {
         
         request.httpMethod = "POST"
         request.allHTTPHeaderFields = headers
-        request.httpBody = postData as! Data
+        request.httpBody = (postData as! Data)
         
         let session = URLSession.shared
         
@@ -125,7 +128,7 @@ class SingIn: UIViewController {
                         let serverData = try JSONDecoder().decode(Server.self, from: data!)
 
                         DispatchQueue.main.async {
-                            self.tempStatus = serverData[0]
+                            tempStatus = serverData[0]
                             self.performSegue(withIdentifier: "showInfo", sender: nil)
                         }
                     } catch let error{

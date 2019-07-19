@@ -33,4 +33,3 @@ struct DiskUtilization: Codable {
 }
 
 typealias Server = [ServerElement]
-

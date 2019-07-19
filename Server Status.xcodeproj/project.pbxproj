@@ -15,6 +15,10 @@
 		EB1AFEBD22D65E9600ED0725 /* SingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1AFEBC22D65E9600ED0725 /* SingIn.swift */; };
 		EB1AFEBF22D6643700ED0725 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1AFEBE22D6643700ED0725 /* AuthModel.swift */; };
 		EB4E0D4C22DF9E3000493423 /* ServerInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4E0D4B22DF9E3000493423 /* ServerInformationView.swift */; };
+		EB4E0D4E22E0E5A700493423 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4E0D4D22E0E5A700493423 /* UILabel.swift */; };
+		EB4E0D5B22E2409D00493423 /* UIView+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4E0D5A22E2409D00493423 /* UIView+Extentions.swift */; };
+		EB4E0D6122E241B900493423 /* Holders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4E0D6022E241B900493423 /* Holders.swift */; };
+		EB4E0D6322E253D900493423 /* UIStackViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4E0D6222E253D900493423 /* UIStackViewExtention.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		EB1AFEBC22D65E9600ED0725 /* SingIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingIn.swift; sourceTree = "<group>"; };
 		EB1AFEBE22D6643700ED0725 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		EB4E0D4B22DF9E3000493423 /* ServerInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerInformationView.swift; sourceTree = "<group>"; };
+		EB4E0D4D22E0E5A700493423 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		EB4E0D5A22E2409D00493423 /* UIView+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extentions.swift"; sourceTree = "<group>"; };
+		EB4E0D6022E241B900493423 /* Holders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Holders.swift; sourceTree = "<group>"; };
+		EB4E0D6222E253D900493423 /* UIStackViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtention.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,17 +68,45 @@
 		EB1AFEA922D65DBB00ED0725 /* Server Status */ = {
 			isa = PBXGroup;
 			children = (
+				EB4E0D6522E2617700493423 /* Model */,
+				EB4E0D5F22E2415400493423 /* Views */,
+				EB4E0D5922E23FF700493423 /* Helpers */,
 				EB1AFEAA22D65DBB00ED0725 /* AppDelegate.swift */,
 				EB1AFEAC22D65DBB00ED0725 /* ViewController.swift */,
 				EB1AFEAE22D65DBB00ED0725 /* Main.storyboard */,
 				EB4E0D4B22DF9E3000493423 /* ServerInformationView.swift */,
-				EB1AFEBE22D6643700ED0725 /* AuthModel.swift */,
 				EB1AFEBC22D65E9600ED0725 /* SingIn.swift */,
 				EB1AFEB122D65DBC00ED0725 /* Assets.xcassets */,
 				EB1AFEB322D65DBC00ED0725 /* LaunchScreen.storyboard */,
 				EB1AFEB622D65DBC00ED0725 /* Info.plist */,
 			);
 			path = "Server Status";
+			sourceTree = "<group>";
+		};
+		EB4E0D5922E23FF700493423 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				EB4E0D4D22E0E5A700493423 /* UILabel.swift */,
+				EB4E0D5A22E2409D00493423 /* UIView+Extentions.swift */,
+				EB4E0D6222E253D900493423 /* UIStackViewExtention.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		EB4E0D5F22E2415400493423 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EB4E0D6022E241B900493423 /* Holders.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		EB4E0D6522E2617700493423 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EB1AFEBE22D6643700ED0725 /* AuthModel.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,9 +181,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB1AFEBD22D65E9600ED0725 /* SingIn.swift in Sources */,
+				EB4E0D6322E253D900493423 /* UIStackViewExtention.swift in Sources */,
+				EB4E0D6122E241B900493423 /* Holders.swift in Sources */,
 				EB1AFEBF22D6643700ED0725 /* AuthModel.swift in Sources */,
 				EB1AFEAD22D65DBB00ED0725 /* ViewController.swift in Sources */,
+				EB4E0D5B22E2409D00493423 /* UIView+Extentions.swift in Sources */,
 				EB4E0D4C22DF9E3000493423 /* ServerInformationView.swift in Sources */,
+				EB4E0D4E22E0E5A700493423 /* UILabel.swift in Sources */,
 				EB1AFEAB22D65DBB00ED0725 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
