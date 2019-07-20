@@ -29,21 +29,54 @@ class ServerInformationView: UIViewController {
         return v
     }()
     
-    let startupDuration = BarChartView(frame: .zero, blockTitle: .init(text: "Startup duration", font: .systemFont(ofSize: 18, weight: .semibold), textColor: .black), value: .init(text: "\(tempStatus.startupDuration)", font: .systemFont(ofSize: 48, weight: .bold), textColor: .gray, textAlignment: .center))
-    let eventQueue = BarChartView(frame: .zero, blockTitle: .init(text: "Events", font: .systemFont(ofSize: 18, weight: .semibold), textColor: .black), value: .init(text: "\(tempStatus.eventQueueLength)", font: .systemFont(ofSize: 48, weight: .bold), textColor: .gray, textAlignment: .center))
+    let startupDuration = BarChartView(frame: .zero, title: "Startup duration", content: "\(tempStatus.startupDuration)")
+    let eventQueue = BarChartView(frame: .zero, title: "Events", content: "\(tempStatus.eventQueueLength)")
+    let installationDate = BarChartView(frame: .zero, title: "Installation date", content: tempStatus.installationDate)
     
+    lazy var scroll : UIScrollView = {
+        let v = UIScrollView()
+//        v.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        v.contentSize = CGSize(width: 414, height: 2000)
+        
+        let startupDuration = BarChartView(frame: .zero, title: "Startup duration", content: "\(tempStatus.startupDuration)")
+        let eventQueue = BarChartView(frame: .zero, title: "Events", content: "\(tempStatus.eventQueueLength)")
+        let installationDate = BarChartView(frame: .zero, title: "Installation date", content: tempStatus.installationDate)
+        
+        v.addSubview(startupDuration)
+        startupDuration.translatesAutoresizingMaskIntoConstraints = false
+        
+        startupDuration.centerXAnchor.constraint(equalTo: v.centerXAnchor).isActive = true
+        startupDuration.topAnchor.constraint(equalTo: v.topAnchor, constant: 32).isActive = true
+        startupDuration.heightAnchor.constraint(equalToConstant: 140).isActive = true
+        startupDuration.widthAnchor.constraint(equalToConstant: 382).isActive = true
+        
+        v.addSubview(eventQueue)
+        eventQueue.translatesAutoresizingMaskIntoConstraints = false
+        
+        eventQueue.centerXAnchor.constraint(equalTo: v.centerXAnchor).isActive = true
+        eventQueue.topAnchor.constraint(equalTo: startupDuration.bottomAnchor, constant: 32).isActive = true
+        eventQueue.heightAnchor.constraint(equalToConstant: 140).isActive = true
+        eventQueue.widthAnchor.constraint(equalToConstant: 382).isActive = true
+        
+        v.addSubview(installationDate)
+        installationDate.translatesAutoresizingMaskIntoConstraints  = false
+        
+        installationDate.centerXAnchor.constraint(equalTo: v.centerXAnchor).isActive = true
+        installationDate.topAnchor.constraint(equalTo: eventQueue.bottomAnchor, constant: 32).isActive = true
+        installationDate.heightAnchor.constraint(equalToConstant: 140).isActive = true
+        installationDate.widthAnchor.constraint(equalToConstant: 382).isActive = true
+        
+        return v
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.addSubview(customNavBar)
         customNavBar.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, size: .init(width: 0, height: 150))
         
-        view.addSubview(startupDuration)
-        startupDuration.anchor(top: customNavBar.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 140))
-        
-        view.addSubview(eventQueue)
-        eventQueue.anchor(top: startupDuration.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 200))
+        view.addSubview(scroll)
+        scroll.anchor(top: customNavBar.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
         
     }
     
