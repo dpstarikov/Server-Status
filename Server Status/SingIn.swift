@@ -8,7 +8,7 @@
 
 import UIKit
 
-var tempStatus = ServerElement(startupDuration: 100, eventQueueLength: 0, installationDate: "s", version: "5.70.10", maxMemory: 1, uptime: 1, cpuLoad: 1.1, totalMemory: 1, eventsProcessed: 1, name: "AggreGate Server", cpuLoadSystem: 0.1, startTime: "s", eventsScheduled: 0, freeMemory: 0, diskUtilization: [DiskUtilization(diskUtilizationName: "5.70.10", diskUtilizationSpace: 0.0)])
+var tempStatus = ServerElement(startupDuration: 100, eventQueueLength: 0, installationDate: "2019-01-22 12:16:22.032", version: "5.70.10", maxMemory: 1, uptime: 1, cpuLoad: 1.1, totalMemory: 1, eventsProcessed: 1, name: "AggreGate Server", cpuLoadSystem: 0.1, startTime: "2019-01-22 12:16:22.032", eventsScheduled: 0, freeMemory: 0, diskUtilization: [DiskUtilization(diskUtilizationName: "5.70.10", diskUtilizationSpace: 0.0)])
 
 class SingIn: UIViewController {
     
@@ -27,8 +27,8 @@ class SingIn: UIViewController {
     @IBAction func connect(_ sender: UIButton) {
         
         //MARK: turn on after test
-        
-  /*      if username.text!.isEmpty || password.text!.isEmpty || server.text!.isEmpty {
+    /*
+        if username.text!.isEmpty || password.text!.isEmpty || server.text!.isEmpty {
             popUpAlert(alertMessage: "Enter valid username credimentals and server adress to connect")
         } else {
             let serverUsername = username.text!
