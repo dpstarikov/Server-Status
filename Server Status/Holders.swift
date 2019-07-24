@@ -50,11 +50,11 @@ class DonutChartView: UIView {
         addSubview(blockTitle)
         blockTitle.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 16, left: 16, bottom: 0, right: 0))
         
-        //MARK: Adding donut diagram
+   /*     //MARK: Adding donut diagram
         //tracklayer
         let trackLayer = CAShapeLayer()
         //TODO: repair center property
-        let circularPath = UIBezierPath(arcCenter :.init(x: 191, y: 182) , radius: 100, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+        let circularPath = UIBezierPath(arcCenter : center , radius: 100, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
         trackLayer.path = circularPath.cgPath
         trackLayer.strokeColor = UIColor.lightGray.cgColor
         trackLayer.lineWidth = 20
@@ -72,7 +72,7 @@ class DonutChartView: UIView {
         shapeLayer.position = .init(x: 9, y: 373) //WTF?! gonna fix it
         shapeLayer.position = center
         shapeLayer.strokeEnd = CGFloat(value/100) // here is the value devided by 100%
-        layer.addSublayer(shapeLayer)
+        layer.addSublayer(shapeLayer) */
         
         // add value content
         let content = UILabel(text: "\(Int(value))%", font: .systemFont(ofSize: 32, weight: .bold), textColor: .gray, textAlignment: .center)

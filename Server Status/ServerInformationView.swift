@@ -12,6 +12,9 @@ import UIKit
 class ServerInformationView: UIViewController {
     
     let gradientLayer = CAGradientLayer()
+    
+    let cpuLoad = DonutChartView(frame: .zero, title: "CPU Load", value: tempStatus.cpuLoad)
+    
     lazy var customNavBar : UIView = {
         let v = UIView()
         gradientLayer.colors = [
@@ -29,17 +32,12 @@ class ServerInformationView: UIViewController {
         return v
     }()
     
-    let scrollView : UIScrollView = {
-        let v = UIScrollView()
-        
-        
-        return v
-    }()
+    let scrollView = UIScrollView()
     
-    lazy var scroll : UIView = { //change to stackview?
+    lazy var scroll : UIView = {
         let v = UIView()
-
-        let serverVersion = BarChartView(frame: v.bounds, title: "Server Version", content: tempStatus.version)
+        
+        let serverVersion = BarChartView(frame: .zero, title: "Server Version", content: tempStatus.version)
         let startupDuration = BarChartView(frame: .zero, title: "Startup duration", content: convertLongToTime(tempStatus.startupDuration))
         let eventQueue = BarChartView(frame: .zero, title: "Events Queue Length", content: "\(tempStatus.eventQueueLength)")
         let installationDate = BarChartView(frame: .zero, title: "Installation Date", content: convertDate(tempStatus.installationDate))
@@ -49,117 +47,57 @@ class ServerInformationView: UIViewController {
         let maxMemory = BarChartView(frame: .zero, title: "Max memory for the JVM", content: convertLongToByte(tempStatus.maxMemory))
         let totalMemory = BarChartView(frame: .zero, title: "Total memory used by the JVM", content: convertLongToByte(tempStatus.totalMemory))
         
-        let cpuLoad = DonutChartView(frame: .zero, title: "CPU Load", value: tempStatus.cpuLoad)
-        let cpuLoadSystem = DonutChartView(frame: .zero, title: "CPU Load System", value: tempStatus.cpuLoadSystem)
+        
         
         v.addSubview(serverVersion)
-        serverVersion.translatesAutoresizingMaskIntoConstraints = false
-        
-        serverVersion.centerXAnchor.constraint(equalTo: v.centerXAnchor).isActive = true
-        serverVersion.topAnchor.constraint(equalTo: v.topAnchor, constant: 32).isActive = true
-        serverVersion.leadingAnchor.constraint(equalTo: v.leadingAnchor, constant: 16).isActive = true
-        serverVersion.trailingAnchor.constraint(equalTo: v.trailingAnchor, constant: 16).isActive = true
-    //    serverVersion.heightAnchor.constraint(equalToConstant: 140).isActive = true
-    //    serverVersion.widthAnchor.constraint(equalToConstant: 382).isActive = true
+        serverVersion.anchor(top: v.topAnchor, leading: v.leadingAnchor, bottom: nil, trailing: v.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 140))
         
         v.addSubview(installationDate)
-        installationDate.translatesAutoresizingMaskIntoConstraints  = false
-        
-        installationDate.centerXAnchor.constraint(equalTo: v.centerXAnchor).isActive = true
-        installationDate.topAnchor.constraint(equalTo: serverVersion.bottomAnchor, constant: 32).isActive = true
-        installationDate.heightAnchor.constraint(equalToConstant: 140).isActive = true
-        installationDate.widthAnchor.constraint(equalToConstant: 382).isActive = true
+        installationDate.anchor(top: serverVersion.bottomAnchor, leading: v.leadingAnchor, bottom: nil, trailing: v.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 140))
         
         v.addSubview(startDate)
-        startDate.translatesAutoresizingMaskIntoConstraints = false
-        
-        startDate.centerXAnchor.constraint(equalTo: v.centerXAnchor).isActive = true
-        startDate.topAnchor.constraint(equalTo: installationDate.bottomAnchor, constant: 32).isActive = true
-        startDate.heightAnchor.constraint(equalToConstant: 140).isActive = true
-        startDate.widthAnchor.constraint(equalToConstant: 382).isActive = true
-        
+        startDate.anchor(top: installationDate.bottomAnchor, leading: v.leadingAnchor, bottom: nil, trailing: v.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 140))
         
         v.addSubview(startupDuration)
-        startupDuration.translatesAutoresizingMaskIntoConstraints = false
-        
-        startupDuration.centerXAnchor.constraint(equalTo: v.centerXAnchor).isActive = true
-        startupDuration.topAnchor.constraint(equalTo: startDate.bottomAnchor, constant: 32).isActive = true
-        startupDuration.heightAnchor.constraint(equalToConstant: 140).isActive = true
-        startupDuration.widthAnchor.constraint(equalToConstant: 382).isActive = true
+        startupDuration.anchor(top: startDate.bottomAnchor, leading: v.leadingAnchor, bottom: nil, trailing: v.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 140))
         
         v.addSubview(uptime)
-        uptime.translatesAutoresizingMaskIntoConstraints = false
-        
-        uptime.centerXAnchor.constraint(equalTo: v.centerXAnchor).isActive = true
-        uptime.topAnchor.constraint(equalTo: startupDuration.bottomAnchor, constant: 32).isActive = true
-        uptime.heightAnchor.constraint(equalToConstant: 140).isActive = true
-        uptime.widthAnchor.constraint(equalToConstant: 382).isActive = true
+        uptime.anchor(top: startupDuration.bottomAnchor, leading: v.leadingAnchor, bottom: nil, trailing: v.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 140))
         
         v.addSubview(freeMemory)
-        freeMemory.translatesAutoresizingMaskIntoConstraints = false
-        
-        freeMemory.centerXAnchor.constraint(equalTo: v.centerXAnchor).isActive = true
-        freeMemory.topAnchor.constraint(equalTo: uptime.bottomAnchor, constant: 32).isActive = true
-        freeMemory.heightAnchor.constraint(equalToConstant: 140).isActive = true
-        freeMemory.widthAnchor.constraint(equalToConstant: 382).isActive = true
+        freeMemory.anchor(top: uptime.bottomAnchor, leading: v.leadingAnchor, bottom: nil, trailing: v.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 140))
         
         v.addSubview(maxMemory)
-        maxMemory.translatesAutoresizingMaskIntoConstraints = false
-        
-        maxMemory.centerXAnchor.constraint(equalTo: v.centerXAnchor).isActive = true
-        maxMemory.topAnchor.constraint(equalTo: freeMemory.bottomAnchor, constant: 32).isActive = true
-        maxMemory.heightAnchor.constraint(equalToConstant: 140).isActive = true
-        maxMemory.widthAnchor.constraint(equalToConstant: 382).isActive = true
+        maxMemory.anchor(top: freeMemory.bottomAnchor, leading: v.leadingAnchor, bottom: nil, trailing: v.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 140))
         
         v.addSubview(totalMemory)
-        totalMemory.translatesAutoresizingMaskIntoConstraints = false
-        
-        totalMemory.centerXAnchor.constraint(equalTo: v.centerXAnchor).isActive = true
-        totalMemory.topAnchor.constraint(equalTo: maxMemory.bottomAnchor, constant: 32).isActive = true
-        totalMemory.heightAnchor.constraint(equalToConstant: 140).isActive = true
-        totalMemory.widthAnchor.constraint(equalToConstant: 382).isActive = true
+        totalMemory.anchor(top: maxMemory.bottomAnchor, leading: v.leadingAnchor, bottom: nil, trailing: v.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 140))
         
         v.addSubview(eventQueue)
-        eventQueue.translatesAutoresizingMaskIntoConstraints = false
+        eventQueue.anchor(top: totalMemory.bottomAnchor, leading: v.leadingAnchor, bottom: nil, trailing: v.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 140))
         
-        eventQueue.centerXAnchor.constraint(equalTo: v.centerXAnchor).isActive = true
-        eventQueue.topAnchor.constraint(equalTo: totalMemory.bottomAnchor, constant: 32).isActive = true
-        eventQueue.heightAnchor.constraint(equalToConstant: 140).isActive = true
-        eventQueue.widthAnchor.constraint(equalToConstant: 382).isActive = true
+//        v.addSubview(cpuLoad)
+//        cpuLoad.anchor(top: eventQueue.bottomAnchor, leading: v.leadingAnchor, bottom: nil, trailing: v.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 332))
+//
+//        v.addSubview(cpuLoadSystem)
+//        cpuLoadSystem.anchor(top: cpuLoad.bottomAnchor, leading: v.leadingAnchor, bottom: nil, trailing: v.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 332))
         
-        v.addSubview(cpuLoad)
-        cpuLoad.translatesAutoresizingMaskIntoConstraints = false
         
-        cpuLoad.centerXAnchor.constraint(equalTo: v.centerXAnchor).isActive = true
-        cpuLoad.topAnchor.constraint(equalTo: eventQueue.bottomAnchor, constant: 32).isActive = true
-        cpuLoad.heightAnchor.constraint(equalToConstant: 332).isActive = true
-        cpuLoad.widthAnchor.constraint(equalToConstant: 382).isActive = true
-        
-        v.addSubview(cpuLoadSystem)
-        cpuLoadSystem.translatesAutoresizingMaskIntoConstraints = false
-        
-        cpuLoadSystem.centerXAnchor.constraint(equalTo: v.centerXAnchor).isActive = true
-        cpuLoadSystem.topAnchor.constraint(equalTo: cpuLoad.bottomAnchor, constant: 32).isActive = true
-        cpuLoadSystem.heightAnchor.constraint(equalToConstant: 332).isActive = true
-        cpuLoadSystem.widthAnchor.constraint(equalToConstant: 382).isActive = true
+     
         
         return v
     }()
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.addSubview(customNavBar)
         customNavBar.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, size: .init(width: 0, height: 150))
         
-    /*    view.addSubview(scroll)
-        scroll.anchor(top: customNavBar.bottomAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor) */
-        
         view.addSubview(scrollView)
         scrollView.contentSize.height = 2500
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         
-        scrollView.backgroundColor = .yellow
         scrollView.topAnchor.constraint(equalTo: customNavBar.bottomAnchor).isActive = true
         scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
@@ -170,6 +108,47 @@ class ServerInformationView: UIViewController {
         scroll.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         scroll.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         scroll.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
+        print(scroll.frame)
+        scrollView.addSubview(cpuLoad)
+        cpuLoad.translatesAutoresizingMaskIntoConstraints = false
+        
+        cpuLoad.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        cpuLoad.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 16).isActive = true
+        cpuLoad.heightAnchor.constraint(equalToConstant: 332).isActive = true
+        cpuLoad.topAnchor.constraint(equalTo: scroll.bottomAnchor,constant: 32).isActive = true
+        
+      //  cpuLoad.anchor(top: scroll.bottomAnchor, leading: scrollView.leadingAnchor, bottom: nil, trailing: scrollView.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 332))
+        
+    /*    //MARK: Adding donut diagram
+        //tracklayer
+        let trackLayer = CAShapeLayer()
+        //TODO: repair center property
+        let circularPath = UIBezierPath(arcCenter : cpuLoad.center, radius: 100, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+        trackLayer.path = circularPath.cgPath
+        trackLayer.strokeColor = UIColor.lightGray.cgColor
+        trackLayer.lineWidth = 20
+        trackLayer.fillColor = UIColor.clear.cgColor
+        cpuLoad.layer.addSublayer(trackLayer)
+        
+        // data layer
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = circularPath.cgPath
+        shapeLayer.strokeColor = UIColor.red.cgColor
+        shapeLayer.lineWidth = 20
+        shapeLayer.lineCap = CAShapeLayerLineCap.round
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.transform = CATransform3DMakeRotation(-CGFloat.pi/2, 0, 0, 1)
+        shapeLayer.position = .init(x: 9, y: 373) //WTF?! gonna fix it
+        shapeLayer.position = cpuLoad.center
+        shapeLayer.strokeEnd = CGFloat(tempStatus.cpuLoad/100) // here is the value devided by 100%
+        cpuLoad.layer.addSublayer(shapeLayer) */
+        
+        
+        
+        
+    //    let cpuLoadSystem = DonutChartView(frame: .zero, title: "CPU Load System", value: tempStatus.cpuLoadSystem)
+        
+        
         
         
         
@@ -179,8 +158,7 @@ class ServerInformationView: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         gradientLayer.frame = customNavBar.bounds
-        scroll.frame = scrollView.bounds
-        print(scrollView.bounds)
+        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {return .lightContent}
