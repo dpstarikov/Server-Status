@@ -47,7 +47,7 @@ class ServerInformationView: UIViewController {
         let maxMemory = BarChartView(frame: .zero, title: "Max memory for the JVM", content: convertLongToByte(tempStatus.maxMemory))
         let totalMemory = BarChartView(frame: .zero, title: "Total memory used by the JVM", content: convertLongToByte(tempStatus.totalMemory))
         
-        
+        v.backgroundColor = UIColor.yellow
         
         v.addSubview(serverVersion)
         serverVersion.anchor(top: v.topAnchor, leading: v.leadingAnchor, bottom: nil, trailing: v.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 140))
@@ -108,14 +108,15 @@ class ServerInformationView: UIViewController {
         scroll.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         scroll.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         scroll.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
-        print(scroll.frame)
-        scrollView.addSubview(cpuLoad)
-        cpuLoad.translatesAutoresizingMaskIntoConstraints = false
         
-        cpuLoad.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        cpuLoad.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 16).isActive = true
-        cpuLoad.heightAnchor.constraint(equalToConstant: 332).isActive = true
-        cpuLoad.topAnchor.constraint(equalTo: scroll.bottomAnchor,constant: 32).isActive = true
+//        print(scroll.frame)
+//        scrollView.addSubview(cpuLoad)
+//        cpuLoad.translatesAutoresizingMaskIntoConstraints = false
+//
+//        cpuLoad.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+//        cpuLoad.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 16).isActive = true
+//        cpuLoad.heightAnchor.constraint(equalToConstant: 332).isActive = true
+//        cpuLoad.topAnchor.constraint(equalTo: scroll.bottomAnchor,constant: 32).isActive = true
         
       //  cpuLoad.anchor(top: scroll.bottomAnchor, leading: scrollView.leadingAnchor, bottom: nil, trailing: scrollView.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 332))
         
@@ -158,7 +159,7 @@ class ServerInformationView: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         gradientLayer.frame = customNavBar.bounds
-        
+        scroll.frame = scrollView.bounds
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {return .lightContent}
