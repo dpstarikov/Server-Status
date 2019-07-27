@@ -17,61 +17,10 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1N8-un-cm7">
-                                <rect key="frame" x="20" y="155" width="374" height="34"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2cl-iW-fPC">
-                                <rect key="frame" x="20" y="220" width="374" height="34"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Server" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MOv-D7-CIL">
-                                <rect key="frame" x="20" y="287" width="374" height="34"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDU-SQ-MOb">
-                                <rect key="frame" x="20" y="386" width="374" height="65"/>
-                                <color key="backgroundColor" red="0.09358346897" green="0.66666668650000005" blue="0.31745442239999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="Z5k-T2-aNL"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Connect">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="connect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yVQ-qG-V8D"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="1N8-un-cm7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="111" id="Bzo-YM-2NS"/>
-                            <constraint firstItem="HDU-SQ-MOb" firstAttribute="leading" secondItem="2cl-iW-fPC" secondAttribute="leading" id="GLj-6M-rc5"/>
-                            <constraint firstItem="HDU-SQ-MOb" firstAttribute="leading" secondItem="MOv-D7-CIL" secondAttribute="leading" id="Huv-0I-d52"/>
-                            <constraint firstItem="HDU-SQ-MOb" firstAttribute="leading" secondItem="1N8-un-cm7" secondAttribute="leading" id="I3q-hw-8Tj"/>
-                            <constraint firstItem="HDU-SQ-MOb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="N8T-Xo-0E1"/>
-                            <constraint firstItem="HDU-SQ-MOb" firstAttribute="trailing" secondItem="2cl-iW-fPC" secondAttribute="trailing" id="Uig-1M-zqU"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HDU-SQ-MOb" secondAttribute="bottom" constant="411" id="Zam-6n-cMz"/>
-                            <constraint firstItem="HDU-SQ-MOb" firstAttribute="top" secondItem="MOv-D7-CIL" secondAttribute="bottom" constant="65" id="cQw-Dh-bt9"/>
-                            <constraint firstItem="HDU-SQ-MOb" firstAttribute="trailing" secondItem="MOv-D7-CIL" secondAttribute="trailing" id="kBc-vg-Jy1"/>
-                            <constraint firstItem="2cl-iW-fPC" firstAttribute="top" secondItem="1N8-un-cm7" secondAttribute="bottom" constant="31" id="kF8-QQ-7ny"/>
-                            <constraint firstItem="HDU-SQ-MOb" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="q9V-AO-MZf"/>
-                            <constraint firstItem="HDU-SQ-MOb" firstAttribute="trailing" secondItem="1N8-un-cm7" secondAttribute="trailing" id="zgc-BE-Zby"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="password" destination="2cl-iW-fPC" id="gZM-88-ZSj"/>
-                        <outlet property="server" destination="MOv-D7-CIL" id="7RD-4M-hfw"/>
-                        <outlet property="username" destination="1N8-un-cm7" id="r8C-VA-hti"/>
                         <segue destination="cMS-PP-xPj" kind="show" identifier="showInfo" id="p6b-SU-tbJ"/>
                     </connections>
                 </viewController>

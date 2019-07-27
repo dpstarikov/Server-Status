@@ -37,7 +37,8 @@ class BarChartView: UIView {
 }
 
 class DonutChartView: UIView {
-    
+    let trackLayer = CAShapeLayer()
+    let shapeLayer = CAShapeLayer()
     init(frame: CGRect, title: String, value: Double) {
         super.init(frame: frame)
         
@@ -50,9 +51,8 @@ class DonutChartView: UIView {
         addSubview(blockTitle)
         blockTitle.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 16, left: 16, bottom: 0, right: 0))
         
-   /*     //MARK: Adding donut diagram
+    //MARK: Adding donut diagram
         //tracklayer
-        let trackLayer = CAShapeLayer()
         //TODO: repair center property
         let circularPath = UIBezierPath(arcCenter : center , radius: 100, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
         trackLayer.path = circularPath.cgPath
@@ -62,23 +62,27 @@ class DonutChartView: UIView {
         layer.addSublayer(trackLayer)
         
         // data layer
-        let shapeLayer = CAShapeLayer()
         shapeLayer.path = circularPath.cgPath
         shapeLayer.strokeColor = UIColor.red.cgColor
         shapeLayer.lineWidth = 20
         shapeLayer.lineCap = CAShapeLayerLineCap.round
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.transform = CATransform3DMakeRotation(-CGFloat.pi/2, 0, 0, 1)
-        shapeLayer.position = .init(x: 9, y: 373) //WTF?! gonna fix it
-        shapeLayer.position = center
+    //    shapeLayer.position = .init(x: 9, y: 373) //WTF?! gonna fix it
+        shapeLayer.position = .init(x: 0, y: 0)
         shapeLayer.strokeEnd = CGFloat(value/100) // here is the value devided by 100%
-        layer.addSublayer(shapeLayer) */
+        layer.addSublayer(shapeLayer)
         
         // add value content
         let content = UILabel(text: "\(Int(value))%", font: .systemFont(ofSize: 32, weight: .bold), textColor: .gray, textAlignment: .center)
         addSubview(content)
         content.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 32, left: 0, bottom: 0, right: 0))
         
+    }
+    
+    override func layoutSubviews() {
+        trackLayer.frame = bounds
+        shapeLayer.frame = bounds
     }
     
     required init?(coder aDecoder: NSCoder) {
