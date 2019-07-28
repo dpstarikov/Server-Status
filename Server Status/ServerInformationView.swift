@@ -27,12 +27,15 @@ class ServerInformationView: UIViewController {
         v.addSubview(labelContainer)
         labelContainer.anchor(top: nil, leading: v.leadingAnchor, bottom: v.bottomAnchor, trailing: v.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 8, right: 0))
         v.setupShadow(opacity: 0.4, radius: 8, offset: .init(width: 0, height: 5), color: #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1))
+        
+        v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
     
     let scrollView = UIScrollView()
     
-    lazy var scroll : UIView = {
+    
+    let scroll : UIView = {
         let v = UIView()
         
         let serverVersion = BarChartView(frame: .init(x: 0, y: 0, width: 0, height: 0), title: "Server Version", content: tempStatus.version)
@@ -44,7 +47,9 @@ class ServerInformationView: UIViewController {
         let freeMemory = BarChartView(frame: .zero, title: "Free memory in the JVM", content: convertLongToByte(tempStatus.freeMemory))
         let maxMemory = BarChartView(frame: .zero, title: "Max memory for the JVM", content: convertLongToByte(tempStatus.maxMemory))
         let totalMemory = BarChartView(frame: .zero, title: "Total memory used by the JVM", content: convertLongToByte(tempStatus.totalMemory))
-        let cpuLoad = DonutChartView(frame: .init(x: 0, y: 0, width: v.frame.width, height: 332), title: "CPU Load", value: tempStatus.cpuLoad)
+        let cpuLoad = DonutChartView(frame: .zero, title: "CPU Load by JVM", value: tempStatus.cpuLoad)
+        let cpuLoadSystem = DonutChartView(frame: .zero, title: "CPU Load", value: tempStatus.cpuLoadSystem)
+       
         
         
         v.addSubview(serverVersion)
@@ -52,44 +57,50 @@ class ServerInformationView: UIViewController {
         
         v.addSubview(installationDate)
         installationDate.anchor(top: serverVersion.bottomAnchor, leading: v.leadingAnchor, bottom: nil, trailing: v.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 140))
-        
+
         v.addSubview(startDate)
         startDate.anchor(top: installationDate.bottomAnchor, leading: v.leadingAnchor, bottom: nil, trailing: v.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 140))
-        
+
         v.addSubview(startupDuration)
         startupDuration.anchor(top: startDate.bottomAnchor, leading: v.leadingAnchor, bottom: nil, trailing: v.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 140))
-        
+
         v.addSubview(uptime)
         uptime.anchor(top: startupDuration.bottomAnchor, leading: v.leadingAnchor, bottom: nil, trailing: v.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 140))
-        
+
         v.addSubview(freeMemory)
         freeMemory.anchor(top: uptime.bottomAnchor, leading: v.leadingAnchor, bottom: nil, trailing: v.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 140))
-        
+
         v.addSubview(maxMemory)
         maxMemory.anchor(top: freeMemory.bottomAnchor, leading: v.leadingAnchor, bottom: nil, trailing: v.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 140))
-        
+
         v.addSubview(totalMemory)
         totalMemory.anchor(top: maxMemory.bottomAnchor, leading: v.leadingAnchor, bottom: nil, trailing: v.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 140))
-        
+
         v.addSubview(eventQueue)
         eventQueue.anchor(top: totalMemory.bottomAnchor, leading: v.leadingAnchor, bottom: nil, trailing: v.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 140))
-        
+
         v.addSubview(cpuLoad)
         cpuLoad.anchor(top: eventQueue.bottomAnchor, leading: v.leadingAnchor, bottom: nil, trailing: v.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 332))
-//
-//        v.addSubview(cpuLoadSystem)
-//        cpuLoadSystem.anchor(top: cpuLoad.bottomAnchor, leading: v.leadingAnchor, bottom: nil, trailing: v.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 332))
+
+        v.addSubview(cpuLoadSystem)
+        cpuLoadSystem.anchor(top: cpuLoad.bottomAnchor, leading: v.leadingAnchor, bottom: nil, trailing: v.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 332))
         
-     
+        v.translatesAutoresizingMaskIntoConstraints = false
         
         return v
     }()
-  
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.addSubview(customNavBar)
-        customNavBar.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, size: .init(width: 0, height: 150))
+        customNavBar.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        customNavBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        customNavBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        customNavBar.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1674).isActive = true
+        
+        print(view.frame.height)
         
         scrollView.contentSize.height = 2500
         view.addSubview(scrollView)
@@ -102,25 +113,17 @@ class ServerInformationView: UIViewController {
         scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
         scrollView.addSubview(scroll)
-        scroll.translatesAutoresizingMaskIntoConstraints = false
         scroll.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         scroll.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         scroll.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
-    
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         gradientLayer.frame = customNavBar.bounds
-        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {return .lightContent}
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        scroll.frame = scrollView.bounds
-    }
 
 }
 
@@ -157,9 +160,3 @@ func convertLongToByte (_ value : Int) -> String {
         return "\(round(content*10/1024)/10) GB"
     }
 }
-
-
-
-
-
-
