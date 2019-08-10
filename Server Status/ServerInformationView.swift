@@ -49,6 +49,9 @@ class ServerInformationView: UIViewController {
         let totalMemory = BarChartView(frame: .zero, title: "Total memory used by the JVM", content: convertLongToByte(tempStatus.totalMemory))
         let cpuLoad = DonutChartView(frame: .zero, title: "CPU Load by JVM", value: tempStatus.cpuLoad)
         let cpuLoadSystem = DonutChartView(frame: .zero, title: "CPU Load", value: tempStatus.cpuLoadSystem)
+        let eventsScheduled = BarChartView(frame: .zero, title: "Events Scheduled", content: "\(tempStatus.eventsScheduled)")
+        let eventsProcessed = BarChartView(frame: .zero, title: "Events Processed", content: "\(tempStatus.eventsProcessed)")
+        let diskUtilil = DonutChartView(frame: .zero, title: "Disk Utilisation", value: tempStatus.diskUtilization[0].diskUtilizationSpace)
        
         
         
@@ -85,6 +88,15 @@ class ServerInformationView: UIViewController {
         v.addSubview(cpuLoadSystem)
         cpuLoadSystem.anchor(top: cpuLoad.bottomAnchor, leading: v.leadingAnchor, bottom: nil, trailing: v.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 332))
         
+        v.addSubview(eventsScheduled)
+        eventsScheduled.anchor(top: cpuLoadSystem.bottomAnchor, leading: v.leadingAnchor, bottom: nil, trailing: v.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 140))
+        
+        v.addSubview(eventsProcessed)
+        eventsProcessed.anchor(top: eventsScheduled.bottomAnchor, leading: v.leadingAnchor, bottom: nil, trailing: v.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 140))
+        
+        v.addSubview(diskUtilil)
+        diskUtilil.anchor(top: eventsProcessed.bottomAnchor, leading: v.leadingAnchor, bottom: nil, trailing: v.trailingAnchor, padding: .init(top: 32, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 332))
+        
         v.translatesAutoresizingMaskIntoConstraints = false
         
         return v
@@ -102,7 +114,7 @@ class ServerInformationView: UIViewController {
         
         print(view.frame.height)
         
-        scrollView.contentSize.height = 2500
+        scrollView.contentSize.height = 3000
         view.addSubview(scrollView)
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
